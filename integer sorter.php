@@ -15,3 +15,4 @@ function filter($text)
 }
 
 filter("123jdfsdjf81293!@&!$*!@");
+
