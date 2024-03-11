@@ -3,7 +3,7 @@
 function validation($IP)
 {
     $div = '';
-    $count = 0;
+    $dots = 0;
 
     for ($i = 0; $i < strlen($IP); $i++) {
         $char = $IP[$i];
@@ -14,7 +14,7 @@ function validation($IP)
         }
         elseif ($char === '.' && $div !== '' && $div <= 255) {
             $div = '';
-            $count++; 
+            $dots++; 
         }
         
         else{
@@ -22,7 +22,7 @@ function validation($IP)
             echo "Not a valid IP";
             return false;
         } 
-    }if( $count === 3 && $div !== '' && $div <= 255)
+    }if( $dots === 3 && $div !== '' && $div <= 255)
     {
         return "Valid IP";
     }
