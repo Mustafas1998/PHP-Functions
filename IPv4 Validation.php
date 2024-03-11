@@ -1,16 +1,39 @@
 <?php
 
-function ipv4_validator($IP)
+function validation($IP)
 {
-    if (filter_var($IP, FILTER_VALIDATE_IP)) 
+    $div = '';
+    $count = 0;
+
+    for ($i = 0; $i < strlen($IP); $i++) {
+        $char = $IP[$i];
+
+        if ($char >= '0' && $char <= '9') 
+        {
+            $div .= $char;
+        }
+        elseif ($char === '.' && $div !== '' && $div <= 255) {
+            $div = '';
+            $count++; 
+        }
+        
+        else{
+            
+            echo "Not a valid IP";
+            return false;
+        } 
+    }if( $count === 3 && $div !== '' && $div <= 255)
     {
         return "Valid IP";
-    }else 
-    {
-        return "Invalid IP";
     }
-}
+    else
+    {
+        return "Invalid Ip";
+    }
+}   
 
-$validation = ipv4_validator("127.1.1.1");
-print($validation);
+$IP_check = validation('126.1.1.1');
+print($IP_check);
+
+
 
